@@ -3,7 +3,7 @@ const production = {
     DB:{
         host:"127.0.0.1",
         user:'root',
-        database:'vue',
+        database:'sub_vue',
         password:'root',
         port:"3306",
         connectionLimit:20,
@@ -15,7 +15,7 @@ const development = {
     DB:{
         host:"127.0.0.1",
         user:'root',
-        database:'vue',
+        database:'sub_vue',
         password:'root',
         port:"3306",
         connectionLimit:20,
