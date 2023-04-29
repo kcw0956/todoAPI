@@ -5,6 +5,9 @@ const http = require('http');
 const app = express();
 const port = config.PORT;
 const cors = require('cors');
+	//body parser
+app.use(express.json());
+app.use(express.urlencoded({extended : true }));
 
 //cors
 let corsOptions = {
@@ -22,7 +25,5 @@ const webServer = http.createServer(app);
 webServer.listen(port,()=>{
     console.log(`http://localhost:${port}`);
 
-	//body parser
-app.use(express.json());
-app.use(express.urlencoded({extended : true }));
+
 })

@@ -150,7 +150,28 @@ const todoController = {
     }
     return rows;
   },
-  
+  reset: async (req) => {
+    try {
+      // 테이블 내용 지우기
+      const deleteQuery = `DELETE FROM ${TABLE.TODO}`;
+      await db.execute(deleteQuery);
+      // title에 내용에 번호 부여, 1씩 증가, len 만큼 insert
+      const len = 10; // 예시를 위해 len 값을 10으로 설정함
+      const insertQuery = `INSERT INTO ${TABLE.TODO} (title) VALUES (?)`;
+      for (let i = 1; i <= len; i++) {
+        await db.execute(insertQuery, [`할 일 ${i}`]);
+      }
+      // 성공으로 리턴
+      return resData(
+        STATUS.S200.result,
+        STATUS.S200.resultDesc,
+        moment().format('LT')
+      );
+    } catch (e) {
+      console.log(e.message);
+      return resData(STATUS.E300.result, STATUS.E300.resultDesc, moment().format('LT'));
+    }
+  },
   
 };
 
